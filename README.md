@@ -24,10 +24,20 @@ Domain Specific Language untuk konfigurasi Machine Learning dengan sintaks seder
 
 ## 🚀 Installation
 
+### Setup Virtual Environment (Recommended)
+
 ```bash
 # Clone repository
 git clone https://github.com/MythEclipse/Automata-Tugas-SimpleNeural-DSL.git
 cd Automata-Tugas-SimpleNeural-DSL
+
+# Create virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate  # Linux/Mac
+# or
+venv\Scripts\activate     # Windows
 
 # Install dependencies
 pip install -r requirements.txt
@@ -37,6 +47,16 @@ pip install -e .
 
 # Verify installation
 simpleneural --version
+```
+
+### Quick Setup Script
+
+```bash
+# Run automated setup script
+bash setup_venv.sh
+
+# Activate the environment
+source venv/bin/activate
 ```
 
 ## 💡 Quick Start

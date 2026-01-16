@@ -61,9 +61,20 @@ env/
 .DS_Store
 Thumbs.db
 
-# Generated files
-*.py
+# Generated output files
+output/*.py
+!output/.gitkeep
+!output/README.md
+temp_*.py
+test_*_output.py
+
+# Keep important Python files
+!ui.py
+!demo.py
 !setup.py
+!test_compiler.py
+!simpleneural/**/*.py
+!examples/**/*.py
 
 # Model files
 *.keras

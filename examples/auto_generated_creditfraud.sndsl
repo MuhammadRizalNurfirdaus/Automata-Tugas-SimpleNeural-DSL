@@ -1,0 +1,24 @@
+# Auto-generated DSL for CreditFraud
+# Dataset: creditcard.csv
+# Task: Classification
+# Classes: 2
+# Features: 30
+# Target Accuracy: 99%
+# Early Stopping: Enabled
+# Architecture: Deep network with 4 hidden layers
+
+DATASET load "datasets/creditcard.csv" TARGET "Class"
+
+MODEL "CreditFraud" {
+    LAYER DENSE units: 256 activation: "relu"
+    LAYER DROPOUT rate: 0.3
+    LAYER DENSE units: 128 activation: "relu"
+    LAYER DROPOUT rate: 0.3
+    LAYER DENSE units: 64 activation: "relu"
+    LAYER DROPOUT rate: 0.3
+    LAYER DENSE units: 32 activation: "relu"
+    LAYER DENSE units: 1 activation: "sigmoid"
+
+    OPTIMIZER "adam" lr: 0.001
+    TRAIN epochs: 500 batch_size: 32 validation_split: 0.2
+}
