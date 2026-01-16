@@ -1,31 +1,28 @@
-# SimpleNeural-DSL: Domain Specific Language untuk Konfigurasi Machine Learning
+# SimpleNeural-DSL
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.13+-orange.svg)](https://www.tensorflow.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-SimpleNeural-DSL adalah Domain Specific Language (DSL) yang memungkinkan Anda mendefinisikan dan mengkonfigurasi model Machine Learning dengan sintaks sederhana dan deklaratif. Proyek ini mengimplementasikan konsep-konsep teori automata dan kompilasi untuk menghasilkan kode Python yang production-ready.
+Domain Specific Language untuk konfigurasi Machine Learning dengan sintaks sederhana dan deklaratif. Mengimplementasikan konsep teori automata dan kompilasi untuk menghasilkan kode Python yang production-ready.
 
-## 🎯 Fitur Utama
+## 🎯 Fitur
 
-- **Sintaks Sederhana**: Definisi model dengan bahasa yang mudah dipahami
-- **Type-Safe**: Validasi sintaks dan semantik pada compile-time
-- **Production-Ready**: Menghasilkan kode Python yang clean dan teroptimasi
-- **Framework Support**: Support untuk TensorFlow/Keras
-- **CLI Tools**: Command-line interface yang lengkap
-- **Interactive UI**: Menu-driven interface untuk kemudahan penggunaan
-- **Kaggle Integration**: Download dan auto-generate DSL dari Kaggle datasets
-- **Error Messages**: Pesan error yang informatif dan actionable
+- **Sintaks Sederhana** - Definisi model dengan bahasa yang mudah dipahami
+- **Type-Safe** - Validasi sintaks dan semantik pada compile-time  
+- **Production-Ready** - Menghasilkan kode Python yang clean dan teroptimasi
+- **Framework Support** - Support untuk TensorFlow/Keras
+- **CLI & UI** - Command-line dan menu-driven interface
+- **Kaggle Integration** - Download dan auto-generate DSL dari dataset
+- **Error Messages** - Pesan error yang informatif dan actionable
 
 ## 📋 Requirements
 
-- Python 3.8 atau lebih tinggi
+- Python 3.8+
 - TensorFlow 2.13+
 - pandas, numpy, scikit-learn
 
 ## 🚀 Installation
-
-### Dari Source
 
 ```bash
 # Clone repository
@@ -37,47 +34,29 @@ pip install -r requirements.txt
 
 # Install package
 pip install -e .
-```
 
-### Cek Instalasi
-
-```bash
+# Verify installation
 simpleneural --version
 ```
 
 ## 💡 Quick Start
 
-### Method 1: Interactive UI (Recommended)
-
-```bash
-# Launch interactive UI
-python ui.py
-```
-
-Features:
-- **Option 1-2**: Load DSL file or write code directly
-- **Option 3**: 🤖 Auto-generate DSL from Kaggle dataset (SMART!)
-- **Option 4**: 📥 Download dataset from Kaggle
-- **Option 5-9**: View, tokenize, parse, validate, compile
-- **Option A**: Compile and run directly
-
-### Method 2: With Kaggle Dataset
+### Interactive UI (Recommended)
 
 ```bash
 python ui.py
-# Choose option 3 (Auto-generate)
-# Select dataset (e.g., 1 for Iris)
-# DSL code auto-generated!
-# Choose option A (Compile & Run)
 ```
 
-See [KAGGLE_QUICKSTART.md](KAGGLE_QUICKSTART.md) for full guide.
+**Features:**
+- Load DSL file or write code directly (Option 1-2)
+- 🤖 Auto-generate DSL from Kaggle dataset (Option 3)
+- 📥 Download dataset from Kaggle (Option 4)
+- View, tokenize, parse, validate, compile (Option 5-9)
+- Compile and run directly (Option A)
 
-### Method 3: Manual DSL File
+### Using DSL File
 
-#### 1. Buat File DSL
-
-Buat file `model.sndsl`:
+**1. Create DSL File** (`model.sndsl`):
 
 ```plaintext
 # SimpleNeural DSL - House Price Prediction
@@ -94,21 +73,13 @@ MODEL "HousePricePredictor" {
 }
 ```
 
-#### 2. Compile ke Python
+**2. Compile & Run:**
 
 ```bash
+# Compile to Python
 simpleneural compile model.sndsl -o output.py
-```
 
-#### 3. Jalankan Model
-
-```bash
-python output.py
-```
-
-Atau compile dan run sekaligus:
-
-```bash
+# Or run directly
 simpleneural run model.sndsl
 ```
 
@@ -158,7 +129,7 @@ adam, sgd, rmsprop, adagrad, adamw, nadam
 
 ## 🌐 Kaggle Integration
 
-SimpleNeural-DSL mendukung download dan auto-generate DSL dari Kaggle datasets!
+Download dan auto-generate DSL dari Kaggle datasets.
 
 ### Quick Start
 
@@ -168,83 +139,29 @@ python ui.py
 # Option 4: Download dataset only
 ```
 
-### Features
+### Setup
 
-- **Auto-Download**: Download dataset langsung dari Kaggle
-- **Auto-Analyze**: Analisis dataset otomatis (task type, columns, classes)
-- **Auto-Generate**: Generate DSL code yang optimal
-- **Popular Datasets**: Quick access ke dataset populer (Iris, Titanic, dll)
-- **Custom Datasets**: Support untuk custom dataset path
-
-### Example Workflow
-
-```bash
-python ui.py
-
-# 1. Auto-generate (Option 3)
-Choose dataset: 1  # Iris
-Model name: IrisClassifier
-Target column: Species
-
-# 2. Auto-generated DSL:
-# - downloads/Iris.csv
-# - examples/auto_generated_irisclassifier.sndsl
-# - Ready to compile!
-
-# 3. Compile & Run (Option A)
-```
+1. Install Kaggle CLI: `pip install kaggle`
+2. Get API credentials from [kaggle.com/account](https://www.kaggle.com/account)
+3. UI will guide setup automatically
 
 See [KAGGLE_QUICKSTART.md](KAGGLE_QUICKSTART.md) for detailed guide.
 
-### Setup
-
-1. Install Kaggle CLI:
-   ```bash
-   pip install kaggle
-   ```
-
-2. Get API credentials from [kaggle.com/account](https://www.kaggle.com/account)
-
-3. UI will guide setup automatically!
-
 ## 🔧 CLI Commands
 
-### Compile
-
-Compile DSL file ke Python:
-
 ```bash
+# Compile DSL to Python
 simpleneural compile <input.sndsl> [-o output.py] [-v]
-```
 
-### Validate
-
-Validasi DSL tanpa generate code:
-
-```bash
+# Validate DSL syntax
 simpleneural validate <input.sndsl>
-```
 
-### Run
-
-Compile dan jalankan:
-
-```bash
+# Compile and run
 simpleneural run <input.sndsl> [-o output.py]
-```
 
-### Debug Tools
-
-Lihat tokens (untuk debugging):
-
-```bash
-simpleneural tokenize <input.sndsl>
-```
-
-Lihat AST (untuk debugging):
-
-```bash
-simpleneural ast <input.sndsl>
+# Debug tools
+simpleneural tokenize <input.sndsl>  # View tokens
+simpleneural ast <input.sndsl>       # View AST
 ```
 
 ## 📁 Struktur Project
@@ -281,71 +198,52 @@ automata/
 └── README.md
 ```
 
-## 🎓 Konsep Automata yang Digunakan
+## 🎓 Konsep Automata
 
-Proyek ini mengimplementasikan berbagai konsep teori automata dan kompilasi:
-
-| Komponen | Teknik Automata | Penerapan |
-|----------|----------------|-----------|
-| **Lexer** | Finite Automata (DFA/NFA) | Pattern matching untuk token recognition |
+| Komponen | Teknik | Penerapan |
+|----------|--------|-----------|
+| **Lexer** | Finite Automata (DFA/NFA) | Pattern matching untuk token |
 | **Lexer** | Regular Expression | Definisi pattern token |
 | **Parser** | Context-Free Grammar | Aturan sintaks bahasa |
-| **Parser** | Recursive Descent | Algoritma parsing LL(1) |
+| **Parser** | Recursive Descent (LL1) | Algoritma parsing |
 | **Semantic** | Symbol Table | Tracking definisi dan scope |
 | **Semantic** | Type System | Validasi tipe data |
 | **CodeGen** | Template-Based | Transformasi AST ke Python |
 
-## 📚 Dokumentasi Lengkap
+## 📚 Dokumentasi
 
-Dokumentasi lengkap tersedia di folder `docs/`:
+Dokumentasi lengkap di folder [`docs/`](docs/):
 
 1. [Pendahuluan](docs/01-pendahuluan.md) - Latar belakang dan tujuan
-2. [Use Case Analysis](docs/02-use-case.md) - Diagram dan spesifikasi
-3. [Arsitektur Sistem](docs/03-arsitektur.md) - ERD dan class diagrams
+2. [Use Case](docs/02-use-case.md) - Diagram dan spesifikasi
+3. [Arsitektur](docs/03-arsitektur.md) - ERD dan class diagrams
 4. [Grammar & Token](docs/04-grammar-token.md) - Spesifikasi lexer dan CFG
 5. [Implementasi](docs/05-implementasi.md) - Detail implementasi
-6. [Testing & Examples](docs/06-testing-examples.md) - Test dan contoh
+6. [Testing](docs/06-testing-examples.md) - Test dan contoh
 
 ## 🧪 Testing
 
-Jalankan test pada contoh file:
-
 ```bash
-# Test minimal example
+# Validate examples
 simpleneural validate examples/minimal.sndsl
 
-# Test dengan verbose output
+# Compile with verbose
 simpleneural compile examples/housing_regression.sndsl -v
 
-# Test tokenization
+# View tokenization
 simpleneural tokenize examples/iris_classification.sndsl
 
-# Test AST generation
+# View AST
 simpleneural ast examples/deep_network.sndsl
 ```
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 👥 Authors
 
-- SimpleNeural Team
-- Tugas Teori Automata & Bahasa Formal
-
-## 🙏 Acknowledgments
-
-- TensorFlow/Keras team
-- Teori Automata & Kompilasi course materials
-- Open source Python community
-
-## 📞 Contact
-
-For questions and support, please open an issue on GitHub.
+SimpleNeural Team - Tugas Teori Automata & Bahasa Formal
 
 ---
 
