@@ -1,0 +1,12 @@
+# SimpleNeural DSL - Minimal Example
+# Contoh paling sederhana
+
+DATASET load "simple_data.csv" TARGET "y"
+
+MODEL "SimpleModel" {
+    LAYER DENSE units: 32 activation: "relu"
+    LAYER DENSE units: 1 activation: "linear"
+    
+    OPTIMIZER "adam" lr: 0.01
+    TRAIN epochs: 50 batch_size: 32 validation_split: 0.2
+}

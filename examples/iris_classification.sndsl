@@ -1,0 +1,15 @@
+# SimpleNeural DSL - Klasifikasi Iris
+# Contoh untuk klasifikasi multi-class
+
+DATASET load "iris_data.csv" TARGET "species"
+
+MODEL "IrisClassifier" {
+    LAYER DENSE units: 64 activation: "relu"
+    LAYER BATCHNORM
+    LAYER DENSE units: 32 activation: "relu"
+    LAYER DROPOUT rate: 0.2
+    LAYER DENSE units: 3 activation: "softmax"
+    
+    OPTIMIZER "adam" lr: 0.01
+    TRAIN epochs: 50 batch_size: 16 validation_split: 0.15
+}

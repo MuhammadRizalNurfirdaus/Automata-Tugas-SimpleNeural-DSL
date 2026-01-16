@@ -1,0 +1,23 @@
+# SimpleNeural DSL - Deep Neural Network
+# Contoh jaringan neural yang lebih dalam
+
+DATASET load "complex_data.csv" TARGET "outcome"
+
+MODEL "DeepNetwork" {
+    LAYER DENSE units: 256 activation: "relu"
+    LAYER BATCHNORM
+    LAYER DROPOUT rate: 0.4
+    
+    LAYER DENSE units: 128 activation: "relu"
+    LAYER BATCHNORM
+    LAYER DROPOUT rate: 0.3
+    
+    LAYER DENSE units: 64 activation: "relu"
+    LAYER DROPOUT rate: 0.2
+    
+    LAYER DENSE units: 32 activation: "relu"
+    LAYER DENSE units: 1 activation: "sigmoid"
+    
+    OPTIMIZER "adam" lr: 0.0005
+    TRAIN epochs: 150 batch_size: 64 validation_split: 0.25
+}

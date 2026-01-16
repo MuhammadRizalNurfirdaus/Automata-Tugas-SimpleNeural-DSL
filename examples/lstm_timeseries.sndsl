@@ -1,0 +1,16 @@
+# SimpleNeural DSL - Time Series dengan LSTM
+# Contoh penggunaan LSTM untuk data sekuensial
+
+DATASET load "stock_prices.csv" TARGET "price"
+
+MODEL "StockPredictor" {
+    LAYER LSTM units: 128 return_sequences: true
+    LAYER DROPOUT rate: 0.3
+    LAYER LSTM units: 64
+    LAYER DROPOUT rate: 0.2
+    LAYER DENSE units: 32 activation: "relu"
+    LAYER DENSE units: 1 activation: "linear"
+    
+    OPTIMIZER "adam" lr: 0.001
+    TRAIN epochs: 100 batch_size: 32 validation_split: 0.2
+}

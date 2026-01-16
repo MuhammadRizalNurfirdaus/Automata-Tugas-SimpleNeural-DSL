@@ -1,0 +1,16 @@
+# SimpleNeural DSL - Prediksi Harga Rumah
+# Contoh penggunaan untuk regresi sederhana
+
+DATASET load "housing_data.csv" TARGET "price"
+
+MODEL "HousePricePredictor" {
+    LAYER DENSE units: 128 activation: "relu"
+    LAYER DROPOUT rate: 0.3
+    LAYER DENSE units: 64 activation: "relu"
+    LAYER DROPOUT rate: 0.2
+    LAYER DENSE units: 32 activation: "relu"
+    LAYER DENSE units: 1 activation: "linear"
+    
+    OPTIMIZER "adam" lr: 0.001
+    TRAIN epochs: 100 batch_size: 32 validation_split: 0.2
+}

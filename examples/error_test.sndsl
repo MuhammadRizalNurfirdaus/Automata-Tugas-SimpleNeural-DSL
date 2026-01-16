@@ -1,0 +1,7 @@
+# Test file dengan error (untuk testing error detection)
+DATASET load "test.csv" TARGET "output"
+
+MODEL "ErrorModel" {
+    LAYER DENSE units: -10 activation: "relu"
+    LAYER DROPOUT rate: 1.5
+}
