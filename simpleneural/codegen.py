@@ -386,6 +386,13 @@ class CodeGenerator:
         self.emit('print("=" * 50)')
         self.emit()
         
+        # Ensure models directory exists
+        self.emit('# Ensure models directory exists')
+        self.emit('import os')
+        self.emit('os.makedirs("models", exist_ok=True)')
+        self.emit(f'model_checkpoint_path = "models/{model_name.lower()}_best.keras"')
+        self.emit()
+        
         # Callbacks
         self.emit('# Callbacks for better training control')
         self.emit('callbacks = [')
@@ -408,10 +415,6 @@ class CodeGenerator:
         self.emit('verbose=1')
         self.dedent()
         self.emit('),')
-        self.emit('# Ensure models directory exists')
-        self.emit('import os')
-        self.emit('os.makedirs("models", exist_ok=True)')
-        self.emit(f'model_checkpoint_path = f"models/{model_name.lower()}_best.keras"')
         self.emit('tf.keras.callbacks.ModelCheckpoint(')
         self.indent()
         self.emit('model_checkpoint_path,')

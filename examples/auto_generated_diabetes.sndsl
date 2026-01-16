@@ -1,0 +1,21 @@
+# Auto-generated DSL for Diabetes
+# Dataset: diabetes.csv
+# Task: Classification
+# Classes: 2
+# Features: 8
+# Target Accuracy: 99%
+# Early Stopping: Enabled
+
+DATASET load "datasets/diabetes.csv" TARGET "Outcome"
+
+MODEL "Diabetes" {
+    LAYER DENSE units: 64 activation: "relu"
+    LAYER DROPOUT rate: 0.3
+    LAYER DENSE units: 32 activation: "relu"
+    LAYER DROPOUT rate: 0.3
+    LAYER DENSE units: 16 activation: "relu"
+    LAYER DENSE units: 1 activation: "sigmoid"
+
+    OPTIMIZER "adam" lr: 0.001
+    TRAIN epochs: 500 batch_size: 16 validation_split: 0.2
+}
