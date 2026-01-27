@@ -25,7 +25,7 @@ for py_version in python3.13 python3; do
         PY_VER=$($py_version --version 2>&1 | awk '{print $2}' | cut -d. -f1,2)
         echo "   Found: $py_version (version $PY_VER)"
         
-        if [[ "$PY_VER" == "3.13" ]]; then
+        if [[ "$PY_VER" == "3.13" ]] || [[ "$PY_VER" == "3.11" ]]; then
             PYTHON_CMD=$py_version
             echo "   ✅ Selected: $py_version"
             break
@@ -35,9 +35,9 @@ done
 
 # If not found, show error
 if [ -z "$PYTHON_CMD" ]; then
-    echo "   ❌ Python 3.13 not found!"
+    echo "   ❌ Python 3.13 or 3.11 not found!"
     echo ""
-    echo "💡 Install Python 3.13:"
+    echo "💡 Install Python:"
     echo "   sudo pacman -S python  # If 3.13 is default"
     echo "   # or"
     echo "   yay -S python313       # From AUR"
